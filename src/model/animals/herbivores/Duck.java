@@ -50,11 +50,11 @@ public class Duck extends Herbivore {
 
             if (prey.getType() == preyType) {
                 int chance = getType().getChanceToEat(preyType);
-                if (ThreadLocalRandom.current().nextInt(100) < chance) {
+                if (ThreadLocalRandom.current().nextInt(90) < chance) {
                     prey.die();
                     location.removeAnimal(prey);
                     hungerLevel += prey.getCurrentWeight();
-                    return; // съели одного и выходим
+                    return;
                 }
             }
         }

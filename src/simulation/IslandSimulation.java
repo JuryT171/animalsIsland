@@ -61,7 +61,6 @@ public class IslandSimulation {
                 allAnimals.addAll(island.getLocation(x, y).getAnimals());
             }
         }
-
         // список задач животных
         List<Runnable> tasks = new ArrayList<>();
         for (Animal animal : allAnimals) {
