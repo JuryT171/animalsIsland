@@ -44,8 +44,8 @@ public class IslandSimulation {
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
                 Location loc = island.getLocation(x, y);
-                if (Math.random() < 0.5) {
-                    loc.addPlant(new Plant()); //  выращиваем растение с 50% вероятностью
+                if (Math.random() < 0.7) {
+                    loc.addPlant(new Plant()); //  выращиваем растение с 70% вероятностью
                 }
             }
         }
@@ -119,7 +119,7 @@ public class IslandSimulation {
             if (type == AnimalType.PLANT) continue; // Растения не заселяем здесь
 
             // создаем особи
-            int countToCreate = random.nextInt(30) + 20;
+            int countToCreate = random.nextInt(50) + 51;
 
             for (int i = 0; i < countToCreate; i++) {
                 // Случайные координаты

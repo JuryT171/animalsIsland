@@ -46,38 +46,35 @@ public abstract class Animal {
     public void eat() {
         if (!isAlive) return;
 
-        // если уже сыт, не ест
-        if (hungerLevel >= type.getFoodNeeded()) {
-            return;
-        }
-        // поедание травы
-        if (type.getDiet().containsKey(AnimalType.PLANT)) { // проверка на еду травы
-            List<Plant> plants = location.getPlants();
-            if (!plants.isEmpty()) {
-                Plant plant = plants.get(0); //берем первое
-                location.removePlant(plant); // обновляем
-                hungerLevel += plant.getWeight(); // уровень сытости
-                return;
-            }
-        }
-
-        // проверяем хищники\нет
-        List<Animal> animalsInCell = location.getAnimals();
-        for (Animal prey : animalsInCell) { // цикл по списку животных
-            if (prey == this || !prey.isAlive()) continue; // условия
-
-            int chance = type.getChanceToEat(prey.getType());
-            if (chance > 0) {
-                if (ThreadLocalRandom.current().nextInt(100) < chance) {  // рандомное число
-                    prey.die(); // съедаем
-                    location.removeAnimal(prey);  // обновляем
-                    hungerLevel += prey.getCurrentWeight();
-                    return;
+        // если голоден - охотится
+        if (hungerLevel < type.getFoodNeeded()) {
+            // поедание травы
+            if (type.getDiet().containsKey(AnimalType.PLANT)) { // проверка на еду травы
+                List<Plant> plants = location.getPlants();
+                if (!plants.isEmpty()) {
+                    Plant plant = plants.get(0); //берем первое
+                    location.removePlant(plant); // обновляем
+                    hungerLevel += plant.getWeight(); // уровень сытости
                 }
             }
+            // проверяем хищники\нет
+            List<Animal> animalsInCell = location.getAnimals();
+            for (Animal prey : animalsInCell) { // цикл по списку животных
+                if (prey == this || !prey.isAlive()) continue; // условия
+
+                int chance = type.getChanceToEat(prey.getType());
+                if (chance > 0) {
+                    if (ThreadLocalRandom.current().nextInt(100) < chance) {  // рандомное число
+                        prey.die(); // съедаем
+                        location.removeAnimal(prey);  // обновляем
+                        hungerLevel += prey.getCurrentWeight();
+                    }
+                }
+            }
+            // уменьшаем жизнь, если не поели
+            hungerLevel -= (type.getFoodNeeded() * 0.1);
         }
-        // уменьшаем жизнь, если не поели
-        hungerLevel -= (type.getFoodNeeded() * 0.1);
+        metabolize();
         if (hungerLevel <= 0) {
             die();
             location.removeAnimal(this);
@@ -106,6 +103,11 @@ public abstract class Animal {
     }
     public void die() {
         this.isAlive = false;
+    }
+    // голодание
+    private void metabolize() {
+        double energyCost = type.getFoodNeeded() * 0.0001;
+        hungerLevel -= energyCost;
     }
 
     // фабричный метод создания животного
