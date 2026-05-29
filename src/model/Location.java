@@ -46,11 +46,11 @@ public class Location {
     }
 
     public synchronized List<Animal> getAnimals() {
-        return new ArrayList<>(animals); // возвращаем копию, чтобы безопасно перебирать в процессе
+        return new ArrayList<>(animals); // потокобезопасность
     }
 
     public synchronized List<Plant> getPlants() {
-        return new ArrayList<>(plants);
+        return new ArrayList<>(plants); // потокобезопасность
     }
 
     public int getX() {
