@@ -1,11 +1,12 @@
-package model.animals;
+package model.animals.herbivores;
 
 import model.Animal;
 import model.AnimalType;
 import model.Island;
 import model.Location;
+import model.animals.Herbivore;
 
-public class Horse extends Animal {
+public class Horse extends Herbivore {
     public Horse(Island island, Location location){
         super(AnimalType.HORSE,island,location);
     }

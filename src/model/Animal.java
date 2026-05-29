@@ -105,7 +105,7 @@ public abstract class Animal {
         this.isAlive = false;
     }
     // голодание
-    private void metabolize() {
+    protected void metabolize() {
         double energyCost = type.getFoodNeeded() * 0.0001;
         hungerLevel -= energyCost;
     }

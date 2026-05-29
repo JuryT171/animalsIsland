@@ -1,6 +1,6 @@
 package model.animals;
 
-public class Plant {
+public class Plant  {
     private double weight;
 
     public Plant() { // конструктор

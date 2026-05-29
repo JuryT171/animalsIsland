@@ -5,6 +5,8 @@ import model.AnimalType;
 import model.Island;
 import model.Location;
 import model.animals.*;
+import model.animals.herbivores.*;
+import model.animals.predators.*;
 
 import java.util.*;
 import java.util.concurrent.*;

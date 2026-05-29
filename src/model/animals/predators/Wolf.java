@@ -1,11 +1,12 @@
-package model.animals;
+package model.animals.predators;
 
 import model.Animal;
 import model.AnimalType;
 import model.Island;
 import model.Location;
+import model.animals.Predator;
 
-public class Wolf extends Animal {
+public class Wolf extends Predator {
 
     public Wolf(Island island, Location location) {
         super(AnimalType.WOLF, island, location);
