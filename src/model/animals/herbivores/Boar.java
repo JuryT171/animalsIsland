@@ -44,7 +44,6 @@ public class Boar extends Herbivore {
         if (hungerLevel < getType().getFoodNeeded()) {
             hunt(AnimalType.CATERPILLAR);
         }
-
         metabolize();
         checkDeath();
     }
