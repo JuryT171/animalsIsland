@@ -46,8 +46,8 @@ public class IslandSimulation {
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
                 Location loc = island.getLocation(x, y);
-                if (Math.random() < 0.7) {
-                    loc.addPlant(new Plant()); //  выращиваем растение с 70% вероятностью
+                if (Math.random() < 0.9) {
+                    loc.addPlant(new Plant()); //  выращиваем растение с 90% вероятностью
                 }
             }
         }
@@ -109,6 +109,10 @@ public class IslandSimulation {
 
         System.out.println("Всего животных: " + totalAnimals);
         System.out.println("==============================");
+        System.out.println("Родилось животных: " + AnimalType.getBorn());
+        System.out.println("Умерло животных: " + AnimalType.getDied());
+        System.out.println("Съедено животных: " + AnimalType.getEaten());
+        AnimalType.resetStats(); // сброс после вывода
     }
 
     // Метод для первоначального заселения (создаем по паре каждого вида)

@@ -38,6 +38,7 @@ public abstract class Predator extends Animal {
                     prey.die();
                     location.removeAnimal(prey);
                     hungerLevel += prey.getCurrentWeight();
+                    AnimalType.incrementEaten();
                     //съели одно и выходим
                     metabolize();
                     checkDeath();
@@ -45,9 +46,6 @@ public abstract class Predator extends Animal {
                 }
             }
         }
-
-        // не поели -> штраф голода + метаболизм
-        hungerLevel -= (type.getFoodNeeded() * 0.01);
         metabolize();
         checkDeath();
     }

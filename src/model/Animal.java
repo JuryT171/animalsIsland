@@ -40,13 +40,13 @@ public abstract class Animal {
         }
     }
 
-    public void eat() {
-        if (!isAlive) return;
+    public abstract void eat(); /* {
+         if (!isAlive) return;
 
         // если голоден - охотится
         if (hungerLevel < type.getFoodNeeded()) {
             // поедание травы
-            if (type.getDiet().containsKey(AnimalType.PLANT)) { // проверка на еду травы
+             if (type.getDiet().containsKey(AnimalType.PLANT)) { // проверка на еду травы
                 List<Plant> plants = location.getPlants();
                 if (!plants.isEmpty()) {
                     Plant plant = plants.get(0); //берем первое
@@ -65,6 +65,7 @@ public abstract class Animal {
                         prey.die(); // съедаем
                         location.removeAnimal(prey);  // обновляем
                         hungerLevel += prey.getCurrentWeight();
+                        prey.getType();
                     }
                 }
             }
@@ -76,7 +77,7 @@ public abstract class Animal {
             die();
             location.removeAnimal(this);
         }
-    }
+    } */
 
     // размножение
     public void reproduce() {
@@ -95,11 +96,16 @@ public abstract class Animal {
                 Animal baby = createNewAnimal(island, location); // рождение
                 if (location.addAnimal(baby)) { // добавляем в клетку
                 }
+                if (location.addAnimal(baby)) {
+                    AnimalType.incrementBorn();
+                }
             }
         }
+
     }
     public void die() {
         this.isAlive = false;
+        AnimalType.incrementDied();
     }
     // голодание
     protected void metabolize() {

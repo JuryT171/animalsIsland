@@ -160,6 +160,40 @@ public enum AnimalType {
     private final double foodNeeded; // кол-во еды для насыщения
     private final String icon; // аватарка
 
+    private static int eaten;
+    private static int born;
+    private static int died;
+
+    public static int getEaten() {
+        return eaten;
+    }
+    public static int getBorn() {
+        return born;
+    }
+    public static int getDied() {
+        return died;
+    }
+
+    // сброс счетчиков
+    public static void resetStats() {
+        eaten = 0;
+        born = 0;
+        died = 0;
+    }
+
+    public static void incrementEaten() {
+        eaten++;
+    }
+
+    public static void incrementBorn() {
+        born++;
+    }
+
+    public static void incrementDied() {
+        died++;
+    }
+
+
     // конструктор
     AnimalType(double weight, int maxPerCell, int speed, double foodNeeded, String icon) {
         this.weight = weight;
