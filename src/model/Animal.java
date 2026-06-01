@@ -25,20 +25,17 @@ public abstract class Animal {
     public void move() {
         if (!isAlive) return;
 
-        // животное может сделать количество шагов, смотря какая скорость
-        for (int i = 0; i < type.getSpeed(); i++) {
-            List<Location> neighbors = island.getNeighbors(location);
+        int maxSteps = type.getSpeed();
+        int actualSteps = ThreadLocalRandom.current().nextInt(maxSteps + 1); // рандом кол-во шагов
+
+        for (int i = 0; i < actualSteps; i++) {
+            List<Location> neighbors = island.getNeighbors(location); // список соседей
             if (neighbors.isEmpty()) break;
+            Location target = neighbors.get(ThreadLocalRandom.current().nextInt(neighbors.size())); // выбираем клетку
 
-            // выбираем случайную соседнюю клетку
-            Location target = neighbors.get(ThreadLocalRandom.current().nextInt(neighbors.size()));
-
-            if (target.addAnimal(this)) {
-                location.removeAnimal(this); // удаляем из стаарой клетки
-                location = target;  // обновляем позицию
-            } else {
-                // если некуда идти - отбой
-                break;
+            if (target.addAnimal(this)) { // если клетки переполнены,остаемся в старой
+                location.removeAnimal(this);  // удаляемся из старой клетки
+                location = target; // записываемся в новую
             }
         }
     }

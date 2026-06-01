@@ -159,7 +159,8 @@ public class IslandSimulation {
             case AnimalType.DUCK: return new Duck(island,location);
             case AnimalType.CATERPILLAR: return new Caterpillar(island,location);
 
-            default: return null; // если класс еще не создан, возвращаем null
+            default: System.out.println("Данное животное не добавлено в конфигурацию"); ; // если класс еще не создан, возвращаем null
+                return null;
         }
     }
 }
