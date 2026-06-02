@@ -34,7 +34,7 @@ public class IslandSimulation {
         // такт запуска 2 сек
         scheduler.scheduleAtFixedRate(this::runOneDay, 0, 2, TimeUnit.SECONDS);
     }
-
+    // счетчик
     private int getTotalAnimalCount() {
         int total = 0;
         for (int x = 0; x < width; x++) {
@@ -142,19 +142,19 @@ public class IslandSimulation {
         AnimalType.resetStats(); // сброс после вывода
     }
 
-    // Метод для первоначального заселения (создаем по паре каждого вида)
+    // метод для первоначального заселения
     private void populateIsland() {
         Random random = new Random();
 
-        // Перебираем все виды животных из Enum
+        // перебираем все виды животных из енум
         for (AnimalType type : AnimalType.values()) {
-            if (type == AnimalType.PLANT) continue; // Растения не заселяем здесь
+            if (type == AnimalType.PLANT) continue; // растения не заселяем здесь
 
             // создаем особи
             int countToCreate = random.nextInt(40) + 41;
 
             for (int i = 0; i < countToCreate; i++) {
-                // Случайные координаты
+                // случайные координаты
                 int x = random.nextInt(width);
                 int y = random.nextInt(height);
                 Location loc = island.getLocation(x, y);
@@ -164,7 +164,7 @@ public class IslandSimulation {
                 if (animal != null) {
                     boolean added = loc.addAnimal(animal);
                     if (!added) {
-                        // Если случайно попали в переполненную клетку, просто игнорируем
+                        // если случайно попали в переполненную клетку, просто игнорируем
                     }
                 }
             }

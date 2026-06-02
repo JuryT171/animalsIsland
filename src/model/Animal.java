@@ -33,7 +33,7 @@ public abstract class Animal {
             if (neighbors.isEmpty()) break;
             Location target = neighbors.get(ThreadLocalRandom.current().nextInt(neighbors.size())); // выбираем клетку
 
-            if (target.addAnimal(this)) { // если клетки переполнены,остаемся в старой
+            if (target.addAnimal(this)) { // пытаемся добавить животное,если клетки переполнены,остаемся в старой
                 location.removeAnimal(this);  // удаляемся из старой клетки
                 location = target; // записываемся в новую
             }
