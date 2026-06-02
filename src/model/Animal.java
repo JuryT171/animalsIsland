@@ -92,7 +92,7 @@ public abstract class Animal {
                 .count(); // тот же тип, не я, и живой, считаем
 
         if (sameSpeciesCount >= 1) {
-            if (Math.random() < 0.3) { // 30% вероятность
+            if (Math.random() < 0.2) { // 20% вероятность
                 Animal baby = createNewAnimal(island, location); // рождение
                 if (location.addAnimal(baby)) { // добавляем в клетку
                 }
@@ -109,7 +109,7 @@ public abstract class Animal {
     }
     // голодание
     protected void metabolize() {
-        double energyCost = type.getFoodNeeded() * 0.0001;
+        double energyCost = type.getFoodNeeded() * 0.01;
         hungerLevel -= energyCost;
     }
 

@@ -22,7 +22,7 @@ public enum AnimalType {
             return diet;
         }
     },
-    SNAKE(15.0, 30, 1, 3, "🐍") { // Удав
+    SNAKE(15.0, 20, 2, 3, "🐍") { // Удав
 
         @Override
         public Map<AnimalType, Integer> getDiet() {
@@ -87,7 +87,7 @@ public enum AnimalType {
             return Map.of(AnimalType.PLANT, 100);
         }
     },
-    RABBIT(2.0, 150, 2, 0.45, "🐇") {
+    RABBIT(2.0, 130, 2, 0.45, "🐇") {
         @Override
         public Map<AnimalType, Integer> getDiet() {
             return Map.of(AnimalType.PLANT, 100);

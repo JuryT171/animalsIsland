@@ -11,6 +11,7 @@ import model.animals.predators.*;
 import java.util.*;
 import java.util.concurrent.*;
 
+
 public class IslandSimulation {
     private final Island island;
     private final ScheduledExecutorService scheduler;
@@ -34,13 +35,39 @@ public class IslandSimulation {
         scheduler.scheduleAtFixedRate(this::runOneDay, 0, 2, TimeUnit.SECONDS);
     }
 
+    private int getTotalAnimalCount() {
+        int total = 0;
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
+                total += island.getLocation(x, y).getAnimals().size();
+            }
+        }
+        return total;
+    }
+
     private void runOneDay() {
         System.out.println("---Начался новый день---");
 
         growPlants();
         processAnimals();
         printStatistics();
+
+        int total = getTotalAnimalCount();
+        if (total > 600_000) {
+            System.out.println("Лимит численности животных превышен (" + total + "). Остановка.");
+            stop();
+        } else if (total == 0) {
+            System.out.println("Все животные вымерли. Остановка.");
+            stop();
+        }
     }
+
+    public void stop() {
+        System.out.println("Останавливаем симуляцию острова...");
+        scheduler.shutdown();
+        animalExecutor.shutdown();
+    }
+
 
     private void growPlants() {
         for (int x = 0; x < width; x++) {
@@ -109,9 +136,9 @@ public class IslandSimulation {
 
         System.out.println("Всего животных: " + totalAnimals);
         System.out.println("==============================");
-        System.out.println("Родилось животных: " + AnimalType.getBorn());
-        System.out.println("Умерло животных: " + AnimalType.getDied());
-        System.out.println("Съедено животных: " + AnimalType.getEaten());
+        System.out.println("Сеголня родилось животных: " + AnimalType.getBorn());
+        System.out.println("Сегодня умерло животных: " + AnimalType.getDied());
+        System.out.println("Сеголня было съедено животных: " + AnimalType.getEaten());
         AnimalType.resetStats(); // сброс после вывода
     }
 
@@ -124,7 +151,7 @@ public class IslandSimulation {
             if (type == AnimalType.PLANT) continue; // Растения не заселяем здесь
 
             // создаем особи
-            int countToCreate = random.nextInt(50) + 51;
+            int countToCreate = random.nextInt(40) + 41;
 
             for (int i = 0; i < countToCreate; i++) {
                 // Случайные координаты
