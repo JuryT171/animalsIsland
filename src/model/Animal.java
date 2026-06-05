@@ -21,7 +21,7 @@ public abstract class Animal {
         this.isAlive = true;
         this.hungerLevel = type.getFoodNeeded();
     }
-
+    // передвижение
     public void move() {
         if (!isAlive) return;
 

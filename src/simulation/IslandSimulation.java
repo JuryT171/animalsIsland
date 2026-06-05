@@ -34,7 +34,7 @@ public class IslandSimulation {
         // такт запуска 2 сек
         scheduler.scheduleAtFixedRate(this::runOneDay, 0, 2, TimeUnit.SECONDS);
     }
-    // счетчик
+    // общий счетчик
     private int getTotalAnimalCount() {
         int total = 0;
         for (int x = 0; x < width; x++) {
@@ -79,7 +79,7 @@ public class IslandSimulation {
             }
         }
     }
-
+    // жизнь животного
     private void processAnimals() {
         // собираем животных
         List<Animal> allAnimals = new ArrayList<>();
