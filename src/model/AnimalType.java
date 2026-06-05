@@ -180,7 +180,7 @@ public enum AnimalType {
         born = 0;
         died = 0;
     }
-
+    // счетчики
     public static void incrementEaten() {
         eaten++;
     }
