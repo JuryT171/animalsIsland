@@ -5,7 +5,7 @@ import model.AnimalType;
 import model.Island;
 import model.Location;
 import model.animals.Predator;
-
+//лиса
 public class Fox extends Predator {
     public Fox(Island island, Location location){
          super (AnimalType.SNAKE,island,location);

@@ -6,7 +6,7 @@ import model.Island;
 import model.Location;
 
 import java.util.List;
-
+// травоядное
 public abstract class Herbivore extends Animal {
     public Herbivore(AnimalType type, Island island, Location location) {
         super(type, island, location);

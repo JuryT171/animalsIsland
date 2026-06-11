@@ -9,7 +9,7 @@ import model.animals.Plant;
 
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
-
+// мышь
 public class Mouse extends Herbivore {
     public Mouse(Island island, Location location) {
         super(AnimalType.MOUSE, island, location);

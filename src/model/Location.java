@@ -4,7 +4,7 @@ import model.animals.Plant;
 
 import java.util.ArrayList;
 import java.util.List;
-
+// локация
 public class Location {
     private final int x; // координаты клетки
     private final int y;

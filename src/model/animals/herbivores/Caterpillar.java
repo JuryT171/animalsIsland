@@ -8,7 +8,7 @@ import model.animals.Herbivore;
 import model.animals.Plant;
 
 import java.util.List;
-
+// гусеница
 public class Caterpillar extends Herbivore {
     public Caterpillar(Island island, Location location){
         super(AnimalType.CATERPILLAR,island,location);

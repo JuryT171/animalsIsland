@@ -5,7 +5,7 @@ import model.AnimalType;
 import model.Island;
 import model.Location;
 import model.animals.Herbivore;
-
+// кролик
 public class Rabbit extends Herbivore {
 
     public Rabbit(Island island, Location location) {

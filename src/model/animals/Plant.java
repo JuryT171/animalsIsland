@@ -1,5 +1,5 @@
 package model.animals;
-
+//трава
 public class Plant  {
     private double weight;
 

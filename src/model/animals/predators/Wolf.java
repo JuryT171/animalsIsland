@@ -5,7 +5,7 @@ import model.AnimalType;
 import model.Island;
 import model.Location;
 import model.animals.Predator;
-
+//волк
 public class Wolf extends Predator {
 
     public Wolf(Island island, Location location) {

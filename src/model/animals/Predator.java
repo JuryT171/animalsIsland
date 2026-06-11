@@ -8,7 +8,7 @@ import model.Location;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
-
+//хищник
 public abstract class Predator extends Animal {
 
     public Predator(AnimalType type, Island island, Location location) {

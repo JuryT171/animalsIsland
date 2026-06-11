@@ -2,7 +2,7 @@ package model;
 
 import java.util.Map;
 import java.util.HashMap;
-
+//энумкласс
 public enum AnimalType {
     // хищники
     WOLF(50.0, 30, 3, 8, "🐺") { //  параметры волка

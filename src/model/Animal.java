@@ -4,7 +4,7 @@ import model.animals.Plant;
 
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
-
+// животное абстракция
 public abstract class Animal {
     protected AnimalType type;
     protected double currentWeight;

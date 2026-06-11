@@ -10,8 +10,9 @@ import model.animals.predators.*;
 
 import java.util.*;
 import java.util.concurrent.*;
+import java.util.stream.Collectors;
 
-
+// симуляция
 public class IslandSimulation {
     private final Island island;
     private final ScheduledExecutorService scheduler;
@@ -89,14 +90,11 @@ public class IslandSimulation {
             }
         }
         // список задач животных
-        List<Runnable> tasks = new ArrayList<>();
-        for (Animal animal : allAnimals) {
-            tasks.add(() -> {
-                animal.eat();
-                animal.move();
-                animal.reproduce();
-            });
-        }
+        List<Runnable> tasks = allAnimals.stream().<Runnable>map(animal -> () -> {
+            animal.eat();
+            animal.move();
+            animal.reproduce();
+        }).collect(Collectors.toList());
         // запускаем задачи в пуле и ждем завершения
         try {
             List<Future<?>> futures = new ArrayList<>();

@@ -2,7 +2,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//остров
 public class Island {
     private final int width; // длина
     private final int height; // ширина

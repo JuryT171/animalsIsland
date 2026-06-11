@@ -5,7 +5,7 @@ import model.AnimalType;
 import model.Island;
 import model.Location;
 import model.animals.Predator;
-
+//змея
 public class Snake extends Predator {
     public Snake(Island island, Location location){
         super(AnimalType.SNAKE,island,location);
